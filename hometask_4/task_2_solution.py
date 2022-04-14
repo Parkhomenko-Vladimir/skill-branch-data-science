@@ -6,7 +6,8 @@ import numpy as np
 # 1 написать функцию `calculate_data_shape`, которая принимает на вход датафрейм `X` и возвращает его размерность
 def calculate_data_shape(data_frame):
     return data_frame.shape
-
+ 
+ 
 # 2 написать функцию `take_columns`, которая принимает на вход датафрейм `X` и возвращает название его столбцов
 def take_columns(data_frame):
     return data_frame.columns
