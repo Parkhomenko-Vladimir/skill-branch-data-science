@@ -26,7 +26,7 @@ def calculate_data_dtypes(X):
 
 # 5 написать функцию calculate_cheap_apartment, которая принимает на вход датафрейм X и возвращает количество квартир, стоимость которых не превышает 1 млн. рублей.
 def calculate_cheap_apartment(X):
-    return len(X[X.price_doc <= 1000000])
+    return len(X[X.price_doc <= 1000000].index)
 
 # 6. написать функцию calculate_squad_in_cheap_apartment, которая принимает на вход датафрейм `X` и возвращает среднюю площадь квартир, стоимость которых не превышает 1 млн. рублей.
 # Признак, отвечающий за площадь - full_sq. Ответ округлить целого значения.
@@ -48,7 +48,8 @@ def calculate_mean_squared_by_num_rooms(X):
 # 9. написать функцию `calculate_squared_stats_by_material`, которая принимает на вход датафрейм `X` и возвращает максимальную и
 # минимальную площадь квартир в зависимости от материала изготовления дома. Каждое значение площади округлить до 2-го знака.
 def calculate_squared_stats_by_material(X):
-    return X.groupby(['material']).agg({'full_sq':['max','min']})
+    return X.groupby(['material'])['full_sq'].agg([('max', 'max'), ('min', 'min')])
+
 
 # 10. Написать функцию calculate_crosstab, которая принимает на вход датафрейм X и возвращает СРЕДНЮЮ СТОИМОСТЬ квартир в зависимости от района города и цели покупки.
 # Ответ - сводная таблица, где индекс - район города (признак - sub_area), столбцы - цель покупки (признак - product_type).
