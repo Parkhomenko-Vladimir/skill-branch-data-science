@@ -1,3 +1,11 @@
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+from sklearn.linear_model import LinearRegression, SGDClassifier
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+
 # 1) будем обучать линейную модель в этом задании на данных о стоимости квартиры в Москве. Перед тем, как мы перейдем к обучению моделей, необходимо выполнить предварительную подготовку данных.
 # Для начала, попробуем разбить данные на обучающую часть и валидационную часть в соотношении 70 / 30 и предварительным перемешиванием. 
 # Параметр `ranom_state` зафиксировать 42. Назовите функцию `split_data_into_two_samples`, которая принимает полный датафрейм, а возвращает 2 датафрейма: для обучения и для валидации.
@@ -20,7 +28,7 @@ def split_data_into_two_samples(X):
 def prepare_data(data):
 
     price_doc = data['SalePrice']
-    data = data.select_dtypes(['number']).drop(['Id','LotFrontage','GarageYrBlt','MasVnrArea','index'], axis=1)  
+    data = data.select_dtypes(['number']).drop(['SalePrice','Id','LotFrontage','GarageYrBlt','MasVnrArea','index'], axis=1)  
     
     return data, price_doc
 
