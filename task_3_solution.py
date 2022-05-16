@@ -2,14 +2,14 @@
 # Для начала, попробуем разбить данные на обучающую часть и валидационную часть в соотношении 70 / 30 и предварительным перемешиванием. 
 # Параметр `ranom_state` зафиксировать 42. Назовите функцию `split_data_into_two_samples`, которая принимает полный датафрейм, а возвращает 2 датафрейма: для обучения и для валидации.
 
-def split_data_into_two_samples(X, y):
+def split_data_into_two_samples(X):
     
-    x_train, x_test, y_train, y_test = train_test_split(X, y,
+    train, test = train_test_split(X, 
                                                         test_size    = 0.3,
                                                         train_size   = 0.7,
                                                         random_state =42)
     
-    return x_train, x_test, y_train, y_test
+    return train, test
 
 
 # 2) продолжим выполнение предварительной подготовки данных: в данных много категориальных признаков (они представлены типами `object`), пока мы с ними работать не умеем, поэтому удалим их из датафрейма.
@@ -20,7 +20,7 @@ def split_data_into_two_samples(X, y):
 def prepare_data(data):
 
     price_doc = data['SalePrice']
-    data = data.select_dtypes(['number']).drop(['SalePrice','Id','LotFrontage','GarageYrBlt','MasVnrArea','index'], axis=1)  
+    data = data.select_dtypes(['number']).drop(['Id','LotFrontage','GarageYrBlt','MasVnrArea','index'], axis=1)  
     
     return data, price_doc
 
