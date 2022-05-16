@@ -20,7 +20,7 @@ def split_data_into_two_samples(X, y):
 def prepare_data(data):
 
     price_doc = data['SalePrice']
-    data = data.select_dtypes(['number']).drop(['SalePrice','Id','LotFrontage','GarageYrBlt','MasVnrArea','index'], axis=1)  
+    data = data.select_dtypes(['number']).drop(['Id','LotFrontage','GarageYrBlt','MasVnrArea','index'], axis=1)  
     
     return data, price_doc
 
