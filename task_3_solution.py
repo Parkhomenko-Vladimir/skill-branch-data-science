@@ -35,7 +35,7 @@ def prepare_data(data):
 # 3) Перед обучением линейной модели также необходимо масштабировать признаки. Для этого мы можем использовать `MinMaxScaler` или `StandardScaler`.
 # Написать функцию - `scale_data`, которая принимает на вход датафрейм и трансформер, а возвращает датафрейм с отмасштабированными признаками.
 
-def scale_data(transformer, data):
+def scale_data(data,transformer):
     
     numeric_data = data.select_dtypes([np.number])
     numeric_features = numeric_data.columns
